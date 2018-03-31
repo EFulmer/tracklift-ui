@@ -1,0 +1,126 @@
+Rough Legend:
+* (Button)
+* <Link or UI element I have to program />
+
+
+Main screen, hosts other screens
++=======================================================+
+|                      Tracklift                        | <---------- title
++-------------------------------------------------------|
+| New Workout * | View Past Workouts * | Log In / Out * | <---------- navbar
++-------------------------------------------------------+
+|                                                       |
+| Login component                                       |
+| -or-                                                  |
+| Registration component                                |
+| -or-                                                  |
+| add workout component                                 |
+| -or-                                                  |
+| select old workout component                          |
+|                                                       |
++=======================================================+
+
+
+Log in screen
+
++===================+
+|      Log In       |
++-------------------+
+|                   |
+| Email     _______ |
+| Password  _______ |
+| <Forgot?/>        |
+| (Login)           |
+| (Register)        |
+|                   |
++===================+
+
+
+Registration screen
+
++=========================+
+|       Registration      |
++-------------------------+
+|                         |
+| Email             _____ |
+| Password          _____ |
+| Confirm password  _____ |
+| (Register)              |
+|                         |
++=========================+
+
+
+Request password reset form
+
++==================+
+| Recover Password |
++------------------+
+|                  |
+| Email     ______ |
+| (Recover)        |
+|                  |
++==================+
+
+
+Reset password form
+
++=============================+
+|       Reset Password        |
++-----------------------------+
+|                             |
+| New password          _____ |
+| Confirm new password  _____ |
+|                             |
++=============================+
+
+
+View workouts screen
+
++==================================+
+|            Workouts              |
++----------------------------------+
+|                                  |
+| <Date and edit workout button /> |
+|                                  |
++==================================+
+
+
+Add / edit workout screen 
+
++===================================+
+|           Edit Workout            |
++-----------------------------------+
+|                                   |
+| (Date picker)    (Delete workout) |
+| <br>                              |
+| <Lifts/>                          |
+| (Add new lift)                    |
+|                                   |
++===================================+
+
+
+Lift form (on workout screen)
+
++=============================+
+|          Edit Lift          |
++-----------------------------+
+|                             |
+| Lift name     (Delete lift) |
+| <Sets/>                     |
+| (Add new set)               |
+|                             |
++=============================+
+
+
+Set form (inside lift form on workout screen)
+
++=====================================================================================+
+|                                  Edit Set                                           |
++-------------------------------------------------------------------------------------+
+|                                                                                     |
+| <Weight entry>  <# sets at weight/reps entry>  <Rep count entry>  <Warmup checkbox> |
+|                                                                                     |
+|                                                                        (Delete set) |
+|                                                                                     |
++=====================================================================================+
+
