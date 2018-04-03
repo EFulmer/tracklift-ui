@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
-import { Navbar, Nav, NavItem } from 'react-bootstrap';
+import { Navbar, Nav, NavItem, Button } from 'react-bootstrap';
 import { LocalForm, Control, combineForms, Errors } from 'react-redux-form';
 import { createStore } from 'redux';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { LinkContainer } from 'react-router-bootstrap';
 import './App.css';
 
 const required = (val) => val && val.length;
+// TODO see if the isEmail function is actually needed.
 const isEmail = (val) => {
   // Regex from https://stackoverflow.com/a/1373724/1893155
   const re = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/i;
@@ -27,31 +30,39 @@ const store = createStore(combineForms({
   register: initialRegister,
 }));
 
+
 class NavbarItems extends Component {
   render() {
     // TODO  gonna need React Router here sometime!
+      // TODO  eliminate boilerplate; repeated use of Router tag to wrap
     if (this.props.loggedIn) {
       return (
-        <Nav>
-          <NavItem eventKey={1} href="#">
-            Add Workout
-          </NavItem>
-          <NavItem eventKey={2} href="#">
-            Workout Log
-          </NavItem>
-        </Nav>
+        <Router>
+          <Nav>
+            <LinkContainer eventKey={1} to="#">
+              Add Workout
+            </LinkContainer>
+            <LinkContainer eventKey={2} to="#">
+              Workout Log
+            </LinkContainer>
+          </Nav>
+        </Router>
       );
     }
     else {
       return (
-        <Nav>
-          <NavItem eventKey={1} href="#">
-            Log In
-          </NavItem>
-          <NavItem eventKey={2} href="#">
-            Sign Up
-          </NavItem>
-        </Nav>
+          <Nav>
+            <LinkContainer eventKey={1} to="/login">
+              <NavItem>
+                Log In
+              </NavItem>
+            </LinkContainer>
+            <LinkContainer eventKey={2} to="#">
+              <NavItem>
+                Sign Up
+              </NavItem>
+            </LinkContainer>
+          </Nav>
       );
     }
   }
@@ -63,7 +74,7 @@ class MyNavbar extends Component {
       <Navbar>
         <Navbar.Header>
           <Navbar.Brand>
-            <a href="#home">Tracklift</a>
+            <a to="#home">Tracklift</a>
           </Navbar.Brand>
         </Navbar.Header>
         <NavbarItems loggedIn={this.props.loggedIn} />
@@ -79,8 +90,10 @@ class Login extends Component {
   }
   render() {
     // TODO  line the elements of this form up in a nice grid
+    //
     // TODO  assert password validity guides!
-    // TODO  assert that email is valid!
+    //
+    // TODO  read up on `type` prop of Control.text and see if the isEmail validator is required.
     return (
       <LocalForm model="login" onSubmit={v => this.handleSubmit(v)}>
         <div className="field">
@@ -98,7 +111,7 @@ class Login extends Component {
             model="login.email"
             show="touched"
             messages={{
-              required: 'Email is required'
+              required: 'Please enter a valid email address.'
             }}
           />
         </div>
@@ -115,34 +128,37 @@ class Login extends Component {
             model="login.password"
             show="touched"
             messages={{
-              required: 'Password is required!'
+              required: 'Please enter a password.'
             }}
           />
         </div>
-        <button type="submit">
-          Submit
-        </button>
-        <button type="submit">
-          Forgot your password?
-        </button>
+        <LinkContainer to="/submit-login">
+          <Button>
+            Submit
+          </Button>
+        </LinkContainer>
+        <LinkContainer to="/forgot-pw">
+          <Button>
+            Forgot your password?
+          </Button>
+        </LinkContainer>
       </LocalForm>
     );
   }
 }
 
+
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <MyNavbar />
-        <p className="App-intro">
-          Hello React!
-        </p>
-        <Login />
-      </div>
+      <Router>
+        <div className="App">
+          <MyNavbar />
+          <Route path="/login" component={Login} />
+        </div>
+      </Router>
     );
   }
 }
-
 
 export default App;
