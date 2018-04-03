@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Button } from 'react-bootstrap';
-import { LocalForm, Control Errors } from 'react-redux-form';
+import { LocalForm, Control, Errors } from 'react-redux-form';
 import { LinkContainer } from 'react-router-bootstrap';
 
 const required = (val) => val && val.length;
@@ -21,6 +21,8 @@ const initialSignUp = {
   password: '',
   confirmPassword: '',
 }
+
+const emailField = {};
 
 class Login extends Component {
   handleSubmit(v) {
