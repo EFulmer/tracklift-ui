@@ -3,7 +3,7 @@ import { combineForms } from 'react-redux-form';
 import { createStore } from 'redux';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { Login, SignUp, initialLogin, initialSignUp } from './Forms.js'
-import MyNavbar from './Navbar.js';
+import Navbar from './Navbar.js';
 import './App.css';
 
 const store = createStore(combineForms({
@@ -16,7 +16,7 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
-          <MyNavbar />
+          <Navbar />
           <Route path="/login" component={Login} />
           <Route path="/sign-up" component={SignUp} />
         </div>
