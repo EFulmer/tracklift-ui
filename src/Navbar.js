@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Navbar, Nav, NavItem } from 'react-bootstrap';
+import { Navbar as BootstrapNavbar, Nav, NavItem } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 
 class NavbarItems extends Component {
@@ -35,19 +35,19 @@ class NavbarItems extends Component {
   }
 }
 
-class MyNavbar extends Component {
+class Navbar extends Component {
   render() {
     return (
-      <Navbar>
-        <Navbar.Header>
-          <Navbar.Brand>
+      <BootstrapNavbar>
+        <BootstrapNavbar.Header>
+          <BootstrapNavbar.Brand>
             <a to="#home">Tracklift</a>
-          </Navbar.Brand>
-        </Navbar.Header>
+          </BootstrapNavbar.Brand>
+        </BootstrapNavbar.Header>
         <NavbarItems loggedIn={this.props.loggedIn} />
-      </Navbar>
+      </BootstrapNavbar>
     );
   }
 }
 
-export default MyNavbar;
+export default Navbar;
