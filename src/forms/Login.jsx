@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import { Form, Control } from 'react-redux-form';
 import { LinkContainer } from 'react-router-bootstrap';
+
 import { isEmail } from './validators.js';
 
 
 class Login extends Component {
+  // TODO (Eric) : send request to back end
   handleSubmit(v) {
     console.log('Received submit on Login form with data ' + JSON.stringify(v));
   }
@@ -19,7 +21,6 @@ class Login extends Component {
         <label>
           Email:
         </label>
-
         <Control.text
           id='login.email'
           model='login.email'
@@ -30,7 +31,6 @@ class Login extends Component {
         <label>
           Password:
         </label>
-
         <Control.text
           id='login.password'
           model='login.password'

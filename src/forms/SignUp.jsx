@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Form, Control, Errors } from 'react-redux-form';
 import { genSalt, hash } from 'bcryptjs';
+
 import { passwordsMatch, longEnough, hasNumbers, hasLetters, isEmail } from './validators.js';
 
 class SignUp extends Component {
@@ -26,7 +27,8 @@ class SignUp extends Component {
         onSubmit={(values) => this.handleSubmit(values)}
         validators={{
           '': { passwordsMatch },
-        }}>
+        }}
+      >
         <Errors
           model='signUp'
           messages={{

@@ -8,7 +8,15 @@ const initialLoginState = {
 
 const initialSignUpState = {
   email: '',
-  confirmEmail: '',
+  password: '',
+  confirmPassword: '',
+}
+
+const initialForgotPWState = {
+  email: '',
+}
+
+const initialResetPWState = {
   password: '',
   confirmPassword: '',
 }
@@ -16,6 +24,8 @@ const initialSignUpState = {
 const forms = combineForms({
   login: initialLoginState,
   signUp: initialSignUpState,
+  forgotPW: initialForgotPWState,
+  resetPW: initialResetPWState,
 });
 
 const store = createStore(forms);
