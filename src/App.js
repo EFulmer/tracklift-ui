@@ -1,26 +1,27 @@
 import React, { Component } from 'react';
-import { combineForms } from 'react-redux-form';
-import { createStore } from 'redux';
+import { Provider } from 'react-redux';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import { Login, SignUp, initialLogin, initialSignUp } from './Forms.js'
+
+import Login from './forms/Login.js';
+import SignUp from './forms/SignUp.js';
 import Navbar from './Navbar.js';
+import store from './store.js';
 import './App.css';
 
-const store = createStore(combineForms({
-  login: initialLogin,
-  signUp: initialSignUp,
-}));
 
+// TODO determine if we can just wrap the Navbar in the Router instead of the entire App
 class App extends Component {
   render() {
     return (
-      <Router>
-        <div className="App">
-          <Navbar />
-          <Route path="/login" component={Login} />
-          <Route path="/sign-up" component={SignUp} />
-        </div>
-      </Router>
+      <Provider store={ store } >
+        <Router>
+          <div className="App">
+            <Navbar />
+            <Route path="/login" component={ Login } />
+            <Route path="/sign-up" component={ SignUp } />
+          </div>
+        </Router>
+      </Provider>
     );
   }
 }
