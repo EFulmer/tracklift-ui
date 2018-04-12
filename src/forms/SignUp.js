@@ -1,24 +1,23 @@
 import React, { Component } from 'react';
-import { Button } from 'react-bootstrap';
-import { Form as Form, Control, Errors } from 'react-redux-form';
-import { LinkContainer } from 'react-router-bootstrap';
+import { Form, Control, Errors } from 'react-redux-form';
 import { genSalt, hash } from 'bcryptjs';
-import { required, passwordsMatch, longEnough, hasNumbers, hasLetters, isEmail } from './validators.js';
+import { passwordsMatch, longEnough, hasNumbers, hasLetters, isEmail } from './validators.js';
 
 class SignUp extends Component {
   handleSubmit(values) {
-    alert('Signup form received data: ' + JSON.stringify(values));
-    let { email, confirmEmail, password, confirmPassword } = values;
+    let { password } = values;
 
     genSalt(10, (err, salt) => {
       hash(password, salt, (err, hash) => {
         console.log('salt = ' + salt + ' pw hash = ' + hash);
+        // TODO fire request to backend
       });
     });
   }
 
   // TODO (Eric) : Error styling.
   // TODO (Eric) : show passwords match error at proper time.
+  // TODO (Eric) : figure out why bootstrap button doesn't fire submit event
   render() {
     return (
       <Form 
