@@ -1,33 +1,49 @@
 import React, { Component } from 'react';
 import { Button } from 'react-bootstrap';
-import { Form as Form, Control, Errors } from 'react-redux-form';
-import { LinkContainer } from 'react-router-bootstrap';
-import { genSalt, hash } from 'bcryptjs';
+import { Form, Control, Errors } from 'react-redux-form';
+import { required, passwordsMatch, longEnough, hasNumbers, hasLetters, isEmail } from './validators.js';
 
 
 class Login extends Component {
   handleSubmit(v) {
-    // TODO  all of this
-    alert(JSON.stringify(v));
+    console.log('Received submit on Login form with data ' + JSON.stringify(v));
   }
+
   render() {
-    // TODO  line the elements of this form up in a nice grid
-    //
-    // TODO  assert password validity guides!
-    //
-    // TODO  figure out why Button component doesn't fire submit event; maybe can use styling instead?
     return (
-      <Form model='login' onSubmit={v => this.handleSubmit(v)}>
-        <LinkContainer to='/submit-login'>
-          <Button>
-            Log In!
-          </Button>
-        </LinkContainer>
-        <LinkContainer to='/forgot-pw'>
-          <button>
-            Forgot your password?
-          </button>
-        </LinkContainer>
+      <Form 
+        model='login'
+        onSubmit={v => this.handleSubmit(v)}
+      >
+
+        <label>
+          Email:
+        </label>
+
+        <Control.text
+          id='login.email'
+          model='login.email'
+          type='email'
+          validators={{ isEmail }}
+        />
+
+        <label>
+          Password:
+        </label>
+
+        <Control.text
+          id='login.password'
+          model='login.password'
+          type='password'
+        />
+
+        <button>
+          Log in
+        </button>
+
+        <button>
+          Forgot your password?
+        </button>
       </Form>
     );
   }

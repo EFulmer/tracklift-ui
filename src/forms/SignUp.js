@@ -15,7 +15,8 @@ class SignUp extends Component {
     });
   }
 
-  // TODO (Eric) : Error styling.
+  // TODO (Eric) : Form styling.
+  // TODO (Eric) : Error styling for password errors.
   // TODO (Eric) : show passwords match error at proper time.
   // TODO (Eric) : figure out why bootstrap button doesn't fire submit event
   render() {
@@ -42,13 +43,6 @@ class SignUp extends Component {
           model='signUp.email'
           type='email'
           validators={{ isEmail }}
-        />
-        <Errors
-          model='signUp.email'
-          messages={{
-            isEmail: 'Please provide a valid email address',
-          }}
-          show={(field) => field.touched && !field.focus}
         />
         
         <label>
