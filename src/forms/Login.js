@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { Button } from 'react-bootstrap';
-import { Form, Control, Errors } from 'react-redux-form';
-import { required, passwordsMatch, longEnough, hasNumbers, hasLetters, isEmail } from './validators.js';
+import { Form, Control } from 'react-redux-form';
+import { LinkContainer } from 'react-router-bootstrap';
+import { isEmail } from './validators.js';
 
 
 class Login extends Component {
@@ -41,9 +41,13 @@ class Login extends Component {
           Log in
         </button>
 
-        <button>
-          Forgot your password?
-        </button>
+        <LinkContainer 
+          to='/forgot-pw'
+        >
+          <button>
+            Forgot your password?
+          </button>
+        </LinkContainer>
       </Form>
     );
   }
