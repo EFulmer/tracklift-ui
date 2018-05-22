@@ -3,11 +3,13 @@ import { Provider } from 'react-redux';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 import store from './store.js';
+// TODO (Eric) : re-export all forms in a single file?
 import Navbar from './Navbar.jsx';
 import Login from './forms/Login.jsx';
 import SignUp from './forms/SignUp.jsx';
 import ForgotPassword from './forms/ForgotPassword.jsx';
 import ResetPassword from './forms/ResetPassword.jsx';
+import EditWorkout from './forms/EditWorkout.jsx';
 import './App.css';
 
 // TODO determine if we can just wrap the Navbar in the Router instead of the entire App
@@ -22,6 +24,7 @@ class App extends Component {
             <Route path="/sign-up" component={ SignUp } />
             <Route path='/forgot-pw' component={ ForgotPassword } />
             <Route path='/reset-pw' component={ ResetPassword } />
+            <Route path='/' component={ EditWorkout } />
           </div>
         </Router>
       </Provider>

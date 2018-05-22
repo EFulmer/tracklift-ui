@@ -9,9 +9,7 @@ class SignUp extends Component {
     let { password } = values;
 
     genSalt(10, (err, salt) => {
-      hash(password, salt, (err, hash) => {
-        console.log('salt = ' + salt + ' pw hash = ' + hash);
-        // TODO fire request to backend
+      hash(password, salt, (err, hash) => { console.log('salt = ' + salt + ' pw hash = ' + hash); // TODO fire request to backend
       });
     });
   }
